@@ -1,8 +1,7 @@
-
 import java.util.Scanner;
 import java.util.HashMap;
 
-public class Main {
+public class Question_10816 {
 	public static void main(String[] args) {
 		
 		/*
@@ -35,17 +34,13 @@ public class Main {
 		int n = input.nextInt();
 		
 		HashMap<Integer, Integer> a_map = new HashMap<>();
-		String answer = "";
+		StringBuilder answer = new StringBuilder();
+		
+		
 		
 		for (int i = 0; i < n; i++) {
 			int a = input.nextInt();
-			
-			if (a_map.containsKey(a)) {
-				int b = a_map.get(a) + 1;
-				a_map.put(a, b);
-			} else {
-				a_map.put(a, 1);
-			}
+			a_map.put(a, a_map.getOrDefault(a, 0) + 1);   // [10:3] [-10:2].... 
 		}
 		
 		int m = input.nextInt();
@@ -53,18 +48,7 @@ public class Main {
 		for (int i = 0; i < m; i++) {
 			int c = input.nextInt();
 			
-			if (i == m - 1) {
-				if (a_map.containsKey(c))
-					answer += a_map.get(c);
-				else
-					answer += 0;
-			} else {
-				if (a_map.containsKey(c))
-					answer += a_map.get(c) + " ";
-				else
-					answer += 0 + " ";
-			}
-			
+			answer.append(a_map.getOrDefault(c, 0)).append(" ");
 		}
 		
 		System.out.println(answer);
